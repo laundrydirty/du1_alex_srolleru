@@ -70,14 +70,14 @@ elif z == 'B':
 
 elif z == 'M':
     for j in range(19):
-        if j == 9:
+        if j == 0 or j==18:
             y = 200
         elif j < 9:
-            y = r * log(1 / tan((90 - (j * 10)) * pi / 360), e)
+            y = r * log(1 / tan((90 - (90 - (j * 10))) * pi / 360), e)
             y = y * 100000 / m
             y = round(-y, 1)
         else:
-            y = r * log(1 / tan((-90 + (j * 10)) * pi / 360), e)
+            y = r * log(1 / tan((90 - (- 90 + (j * 10))) * pi / 360), e)
             y = y * 100000 / m
             y = round(y, 1)
 
