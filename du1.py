@@ -1,14 +1,12 @@
 from math import sin, tan, pi, e, log
 
-# vstup zobrazeni
 z = input("Jaké zobrazení: ")
 
-#osetreni korektniho zobrazeni
+# osetreni korektniho zobrazeni
 if z != "A" and z != "L" and z != "B" and z != "M":
     print("Toto zobrazení neznám, prosím zkus to znovu.")
     exit()
 
-# vstup meritko
 m = int(input("Jaké měřítko: "))
 
 # osetreni korektniho meritka
@@ -16,7 +14,6 @@ if m <= 0:
     print("špatný formát měřítka, zkus to prosím znova")
     exit()
 
-# vstup volitelny polomer
 r = float(input("Zadáš i poloměr?: "))
 
 # osetreni korektniho polomeru
@@ -78,7 +75,7 @@ elif z == 'B':
 elif z == 'M':
     # Mercatorovo zobrazeni
     for j in range(19):
-        if j == 0 or j==18:
+        if j == 0 or j == 18:
             y = 200
         elif j < 9:
             y = r * log(1 / tan((90 - (90 - (j * 10))) * pi / 360), e)
@@ -93,10 +90,6 @@ elif z == 'M':
         else:
             rovnobezky.append(y)
 
-
-
-
 # vypsani vzdalenosti rovnobezek a poledniku
 print("Rovnoběžky: ", rovnobezky)
 print("Poledníky: ", poledniky)
-
