@@ -10,7 +10,7 @@ if m <= 0:
     exit()
 
 # vstup volitelny polomer
-r = float(input("Zadáš i poloměr?:"))
+r = float(input("Zadáš i poloměr?: "))
 
 if r == 0:
     # pri zadani 0, je pouzit prednastaveny polomer
