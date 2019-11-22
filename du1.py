@@ -1,46 +1,45 @@
 from math import sin, tan, pi, e, log
 
-# vstupy zobrazeni a mertika
+# vstup zobrazeni
 z = input("Jaké zobrazení: ")
+
+#osetreni korektniho zobrazeni
+if z != "A" and z != "L" and z != "B" and z != "M":
+    print("Toto zobrazení neznám, prosím zkus to znovu.")
+    exit()
+
+# vstup meritko
 m = int(input("Jaké měřítko: "))
 
+# osetreni korektniho meritka
 if m <= 0:
-    # pri meritku mensim nebo rovnem nule je vypsana chybova hlaska a program skonci
     print("špatný formát měřítka, zkus to prosím znova")
     exit()
 
 # vstup volitelny polomer
 r = float(input("Zadáš i poloměr?: "))
 
+# osetreni korektniho polomeru
 if r == 0:
-    # pri zadani 0, je pouzit prednastaveny polomer
     r = 6371.11
-elif r > 0:
-    # pri polomeru vetsim nebo rovnem nule je pouzit vstup
-    r = r
-else:
-    # pri spatnem vstupu polomeru je vypsana chybova hlaska a program skonci
+if r < 0:
     print("špatný formát poloměru, zkus to prosím znova")
     exit()
 
 # prazdne seznamy rovnobezek a poledniku
-rovno = []
-pole = []
+rovnobezky = []
+poledniky = []
 
 # vypocet vzdalensti poledniku pro vsechna zobrazeni stejna
 for i in range(37):
-    # vzorec pro vypocet vzdalenosti po 10 stupnich
     x = r * ((-180 + (i * 10)) * pi / 180)
-    # prevod na centimetry a podeleni meritkem
     x = x * 100000 / m
-    # zaokrouhleni na jedno desetinne misto
     x = round(x, 1)
     if x > 100 or x < -100:
         # pokud vzdalenost presahne jeden metr, zapise se do seznamu pomlcka
-        pole.append('-')
+        poledniky.append('-')
     else:
-        # jinak je vzdalenost zapsana do seznamu
-        pole.append(x)
+        poledniky.append(x)
 
 # vypocet vzdalenosti rovnobezek pro jednotliva zobrazeni
 if z == 'A':
@@ -50,9 +49,9 @@ if z == 'A':
         y = y * 100000 / m
         y = round(y, 1)
         if y > 100 or y < -100:
-            rovno.append('-')
+            rovnobezky.append('-')
         else:
-            rovno.append(y)
+            rovnobezky.append(y)
 
 elif z == 'L':
     # Lambertovo zobrazeni
@@ -61,9 +60,9 @@ elif z == 'L':
         y = y * 100000 / m
         y = round(y, 1)
         if y > 100 or y < -100:
-            rovno.append('-')
+            rovnobezky.append('-')
         else:
-            rovno.append(y)
+            rovnobezky.append(y)
 
 elif z == 'B':
     # Braunovo zobrazeni
@@ -72,9 +71,9 @@ elif z == 'B':
         y = y * 100000 / m
         y = round(y, 1)
         if y > 100 or y < -100:
-            rovno.append('-')
+            rovnobezky.append('-')
         else:
-            rovno.append(y)
+            rovnobezky.append(y)
 
 elif z == 'M':
     # Mercatorovo zobrazeni
@@ -90,15 +89,14 @@ elif z == 'M':
             y = y * 100000 / m
             y = round(y, 1)
         if y > 100 or y < -100:
-            rovno.append('-')
+            rovnobezky.append('-')
         else:
-            rovno.append(y)
-else:
-    # pri spatnem vstupu zobrazeni je vypsana chybova hlaska a program skonci
-    print("Toto zobrazení neznám, prosím zkus to znovu.")
-    exit()
+            rovnobezky.append(y)
+
+
+
 
 # vypsani vzdalenosti rovnobezek a poledniku
-print("Rovnoběžky: ", rovno)
-print("Poledníky: ", pole)
+print("Rovnoběžky: ", rovnobezky)
+print("Poledníky: ", poledniky)
 
