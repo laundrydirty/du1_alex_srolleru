@@ -33,10 +33,16 @@ for i in range(37):
     x = x * 100000 / m
     x = round(x, 1)
     if x > 100 or x < -100:
-        # pokud vzdalenost presahne jeden metr, zapise se do seznamu pomlcka
         poledniky.append('-')
     else:
         poledniky.append(x)
+
+# funkce zapisujici rovnobezky nebo pomlcku do seznamu
+def zapis_rovnobezku(y):
+    if y > 100 or y < -100:
+        rovnobezky.append('-')
+    else:
+        rovnobezky.append(y)
 
 # vypocet vzdalenosti rovnobezek pro jednotliva zobrazeni
 if z == 'A':
@@ -45,10 +51,7 @@ if z == 'A':
         y = r * ((-90 + (j * 10)) * pi / 180)
         y = y * 100000 / m
         y = round(y, 1)
-        if y > 100 or y < -100:
-            rovnobezky.append('-')
-        else:
-            rovnobezky.append(y)
+        zapis_rovnobezku(y)
 
 elif z == 'L':
     # Lambertovo zobrazeni
@@ -56,10 +59,7 @@ elif z == 'L':
         y = r * sin((-90 + (j * 10)) * pi / 180)
         y = y * 100000 / m
         y = round(y, 1)
-        if y > 100 or y < -100:
-            rovnobezky.append('-')
-        else:
-            rovnobezky.append(y)
+        zapis_rovnobezku(y)
 
 elif z == 'B':
     # Braunovo zobrazeni
@@ -67,10 +67,7 @@ elif z == 'B':
         y = 2 * r * tan((-90 + (j * 10)) * pi / 360)
         y = y * 100000 / m
         y = round(y, 1)
-        if y > 100 or y < -100:
-            rovnobezky.append('-')
-        else:
-            rovnobezky.append(y)
+        zapis_rovnobezku(y)
 
 elif z == 'M':
     # Mercatorovo zobrazeni
@@ -85,10 +82,7 @@ elif z == 'M':
             y = r * log(1 / tan((90 - (- 90 + (j * 10))) * pi / 360), e)
             y = y * 100000 / m
             y = round(y, 1)
-        if y > 100 or y < -100:
-            rovnobezky.append('-')
-        else:
-            rovnobezky.append(y)
+        zapis_rovnobezku(y)
 
 # vypsani vzdalenosti rovnobezek a poledniku
 print("Rovnoběžky: ", rovnobezky)
