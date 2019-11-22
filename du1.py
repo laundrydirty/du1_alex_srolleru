@@ -1,6 +1,6 @@
 from math import sin, tan, pi, e, log
 
-# vstupy zobrazeni a mertika
+# vstupy zobrazeni a meritka
 z = input("Jaké zobrazení: ")
 m = int(input("Jaké měřítko: "))
 
