@@ -1,5 +1,12 @@
 from math import sin, tan, pi, e, log
 
+# funkce zapisujici rovnobezky nebo pomlcku do seznamu
+def zapis_rovnobezku(y):
+    if y > 100 or y < -100:
+        rovnobezky.append('-')
+    else:
+        rovnobezky.append(y)
+
 z = input("Jaké zobrazení: ")
 
 # osetreni korektniho zobrazeni
@@ -36,13 +43,6 @@ for i in range(37):
         poledniky.append('-')
     else:
         poledniky.append(x)
-
-# funkce zapisujici rovnobezky nebo pomlcku do seznamu
-def zapis_rovnobezku(y):
-    if y > 100 or y < -100:
-        rovnobezky.append('-')
-    else:
-        rovnobezky.append(y)
 
 # vypocet vzdalenosti rovnobezek pro jednotliva zobrazeni
 if z == 'A':
